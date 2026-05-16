@@ -258,6 +258,10 @@ body {
 }
 .form-input:focus, .form-textarea:focus { border-color:var(--gold); box-shadow:0 0 18px rgba(200,151,58,0.12); }
 .form-textarea { resize:vertical; min-height:130px; }
+.field {
+  transform: scale(0.85);
+  transform-origin: 0 0;
+}
 
 /* ── FOOTER ── */
 footer {
