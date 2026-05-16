@@ -1,679 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Namastra — Soul of Every Name</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet" />
-  <meta name="google-site-verification" content="3CCg0IlEXpsQDpoQTUvCAntSxc8ipR6iSdHGLuj7LyU" />
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Namastra — Discover the Meaning Behind Every Name</title>
+<meta name="google-site-verification" content="3CCg0IlEXpsQDpoQTUvCAntSxc8ipR6iSdHGLuj7LyU" />
+  <!-- SEO Meta -->
+  <meta name="description" content="Namastra reveals the deep meaning, origin, religion, and cultural significance of any name. Search baby names, learn etymology, numerology, and history — for free."/>
+  <meta name="keywords" content="name meaning, baby name meaning, name origin, name by religion, Hindu names, Muslim names, Christian names, name numerology, name etymology, what does my name mean"/>
+  <meta name="author" content="Tushal kumar"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://namastra.netlify.app/index.html"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Namastra — Discover the Meaning Behind Every Name"/>
+  <meta property="og:description" content="Search any name and instantly discover its meaning, cultural origin, religious significance, numerology, and famous bearers."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://namastra.netlify.app"/>
+  <meta property="og:image" content="https://namastra.netlify.app/og-image.jpg"/>
+  
   <link rel="icon" type="image/png" href="logo.png">
-  <style>
-    :root {
-      --ink: #1a0f0a;
-      --parchment: #f5ede0;
-      --gold: #c8973a;
-      --gold-light: #e8b96a;
-      --rust: #8b3a2a;
-      --sage: #5a7a5c;
-      --lapis: #2c4a7a;
-      --cream: #fdf6ec;
-      --muted: #8a7060;
-    }
 
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Namastra — Soul of Every Name"/>
+  <meta name="twitter:description" content="Search any name and discover its deep meaning, origin, religion, numerology and more."/>
 
-    body {
-      background: var(--ink);
-      color: var(--parchment);
-      font-family: 'Outfit', sans-serif;
-      min-height: 100vh;
-      overflow-x: hidden;
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Namastra",
+    "url": "https://namastra.netlify.app",
+    "description": "Discover the meaning, origin, and cultural significance of any name",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://namastra.netlify.app/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
     }
+  }
+  </script>
 
-    /* Starfield */
-    .stars {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-      overflow: hidden;
-    }
-    .star {
-      position: absolute;
-      width: 2px; height: 2px;
-      background: var(--gold-light);
-      border-radius: 50%;
-      opacity: 0;
-      animation: twinkle var(--d, 3s) var(--delay, 0s) infinite ease-in-out;
-    }
-    @keyframes twinkle {
-      0%, 100% { opacity: 0; transform: scale(0.5); }
-      50% { opacity: var(--bright, 0.6); transform: scale(1.2); }
-    }
-
-    /* Header */
-    header {
-      position: relative;
-      z-index: 10;
-      text-align: center;
-      padding: 70px 20px 40px;
-    }
-    .ornament {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      color: var(--gold);
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      opacity: 0.8;
-      margin-bottom: 12px;
-    }
-    h1 {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2.8rem, 8vw, 5.5rem);
-      font-weight: 400;
-      color: var(--parchment);
-      line-height: 1;
-      letter-spacing: 0.05em;
-    }
-    h1 span {
-      color: var(--gold);
-      font-style: italic;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15em;
-    }
-    .tagline {
-      margin-top: 14px;
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      font-size: 1.2rem;
-      color: var(--muted);
-      letter-spacing: 0.08em;
-    }
-    .divider {
-      margin: 28px auto;
-      width: 180px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    /* Search Box */
-    .search-section {
-      position: relative;
-      z-index: 10;
-      max-width: 640px;
-      margin: 0 auto;
-      padding: 0 24px 60px;
-    }
-    .input-wrap {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-    .name-input {
-      width: 100%;
-      background: rgba(245, 237, 224, 0.06);
-      border: 1px solid rgba(200, 151, 58, 0.4);
-      border-radius: 4px;
-      padding: 18px 24px;
-      font-family: 'Cinzel', serif;
-      font-size: 1.5rem;
-      color: var(--parchment);
-      text-align: center;
-      letter-spacing: 0.12em;
-      outline: none;
-      transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
-    }
-    .name-input::placeholder {
-      color: rgba(245,237,224,0.25);
-      font-size: 1rem;
-      letter-spacing: 0.2em;
-    }
-    .name-input:focus {
-      border-color: var(--gold);
-      background: rgba(245, 237, 224, 0.1);
-      box-shadow: 0 0 28px rgba(200,151,58,0.15);
-    }
-
-    .filters {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .filter-select {
-      flex: 1;
-      min-width: 140px;
-      background: rgba(245, 237, 224, 0.06);
-      border: 1px solid rgba(200,151,58,0.3);
-      border-radius: 4px;
-      padding: 12px 16px;
-      color: var(--parchment);
-      font-family: 'Outfit', sans-serif;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      outline: none;
-      cursor: pointer;
-      transition: border-color 0.3s;
-      appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c8973a' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      padding-right: 36px;
-    }
-    .filter-select:focus { border-color: var(--gold); }
-    .filter-select option { background: #2a1a0e; color: var(--parchment); }
-    .filter-select optgroup { background: #1e1208; color: var(--gold); font-style: normal; font-size: 0.78rem; }
-
-    .search-btn {
-      width: 100%;
-      padding: 16px;
-      background: linear-gradient(135deg, var(--gold) 0%, #a07028 100%);
-      border: none;
-      border-radius: 4px;
-      color: var(--ink);
-      font-family: 'Cinzel', serif;
-      font-size: 1rem;
-      letter-spacing: 0.2em;
-      cursor: pointer;
-      transition: transform 0.2s, box-shadow 0.2s, opacity 0.2s;
-      font-weight: 600;
-    }
-    .search-btn:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 28px rgba(200,151,58,0.35);
-    }
-    .search-btn:active:not(:disabled) { transform: translateY(0); }
-    .search-btn:disabled { opacity: 0.6; cursor: not-allowed; }
-
-    /* Loading */
-    .loading {
-      display: none;
-      text-align: center;
-      padding: 50px 20px;
-      position: relative;
-      z-index: 10;
-    }
-    .loading.show { display: block; }
-    .loader-ring {
-      width: 56px; height: 56px;
-      border: 2px solid rgba(200,151,58,0.2);
-      border-top-color: var(--gold);
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      margin: 0 auto 20px;
-    }
-    @keyframes spin { to { transform: rotate(360deg); } }
-    .loading p {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      color: var(--muted);
-      font-size: 1.05rem;
-      letter-spacing: 0.06em;
-    }
-
-    /* Result Card */
-    .result-section {
-      position: relative;
-      z-index: 10;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-      display: none;
-    }
-    .result-section.show { display: block; animation: fadeUp 0.6s ease forwards; }
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    .result-card {
-      background: rgba(245, 237, 224, 0.04);
-      border: 1px solid rgba(200,151,58,0.25);
-      border-radius: 6px;
-      overflow: hidden;
-    }
-
-    .card-header {
-      background: linear-gradient(135deg, rgba(200,151,58,0.15) 0%, rgba(200,151,58,0.05) 100%);
-      border-bottom: 1px solid rgba(200,151,58,0.2);
-      padding: 36px 40px 28px;
-      text-align: center;
-    }
-    .name-display {
-      font-family: 'Cinzel', serif;
-      font-size: clamp(2rem, 6vw, 3.5rem);
-      color: var(--gold);
-      letter-spacing: 0.1em;
-      margin-bottom: 6px;
-    }
-    .name-pronunciation {
-      font-family: 'Cormorant Garamond', serif;
-      font-style: italic;
-      color: var(--muted);
-      font-size: 1rem;
-      letter-spacing: 0.08em;
-    }
-
-    .card-body {
-      padding: 32px 40px;
-      display: flex;
-      flex-direction: column;
-      gap: 28px;
-    }
-
-    .info-block {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-    }
-    .info-label {
-      font-family: 'Cinzel', serif;
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    .info-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(90deg, rgba(200,151,58,0.4), transparent);
-    }
-    .info-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.15rem;
-      line-height: 1.7;
-      color: var(--parchment);
-      font-weight: 300;
-    }
-
-    .tags-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-    .tag {
-      padding: 5px 14px;
-      border-radius: 2px;
-      font-size: 0.78rem;
-      letter-spacing: 0.08em;
-      font-family: 'Outfit', sans-serif;
-    }
-    .tag-religion { background: rgba(44,74,122,0.35); border: 1px solid rgba(44,74,122,0.6); color: #9bb5e0; }
-    .tag-country { background: rgba(90,122,92,0.3); border: 1px solid rgba(90,122,92,0.5); color: #a8c8aa; }
-    .tag-gender { background: rgba(139,58,42,0.3); border: 1px solid rgba(139,58,42,0.5); color: #e0a898; }
-    .tag-origin { background: rgba(200,151,58,0.15); border: 1px solid rgba(200,151,58,0.4); color: var(--gold-light); }
-
-    .numerology-block {
-      background: rgba(200,151,58,0.06);
-      border: 1px solid rgba(200,151,58,0.15);
-      border-radius: 4px;
-      padding: 20px 24px;
-      display: flex;
-      align-items: center;
-      gap: 20px;
-    }
-    .numerology-num {
-      font-family: 'Cinzel', serif;
-      font-size: 2.8rem;
-      color: var(--gold);
-      line-height: 1;
-      min-width: 60px;
-      text-align: center;
-    }
-    .numerology-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .famous-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 10px;
-    }
-    .famous-person {
-      background: rgba(245,237,224,0.04);
-      border: 1px solid rgba(245,237,224,0.08);
-      border-radius: 4px;
-      padding: 12px 16px;
-    }
-    .famous-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      color: var(--parchment);
-      font-weight: 600;
-    }
-    .famous-desc {
-      font-size: 0.78rem;
-      color: var(--muted);
-      margin-top: 3px;
-    }
-
-    /* Error */
-    .error-box {
-      display: none;
-      background: rgba(139,58,42,0.15);
-      border: 1px solid rgba(139,58,42,0.4);
-      border-radius: 4px;
-      padding: 20px 28px;
-      text-align: center;
-      color: #e0a898;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.05rem;
-      margin-top: 24px;
-    }
-    .error-box.show { display: block; }
-
-    /* Popular Names */
-    .popular-section {
-      position: relative;
-      z-index: 10;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 0 24px 80px;
-    }
-    .section-title {
-      font-family: 'Cinzel', serif;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      color: var(--gold);
-      text-transform: uppercase;
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    .popular-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      justify-content: center;
-    }
-    .popular-chip {
-      padding: 8px 18px;
-      background: rgba(245,237,224,0.05);
-      border: 1px solid rgba(200,151,58,0.2);
-      border-radius: 2px;
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      color: var(--parchment);
-      cursor: pointer;
-      transition: all 0.25s;
-      letter-spacing: 0.05em;
-    }
-    .popular-chip:hover {
-      background: rgba(200,151,58,0.12);
-      border-color: var(--gold);
-      color: var(--gold-light);
-    }
-
-    @media (max-width: 600px) {
-      .card-body { padding: 24px 20px; }
-      .card-header { padding: 28px 20px 22px; }
-      .numerology-block { flex-direction: column; text-align: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="shared.css"/>
 </head>
 <body>
 
 <div class="stars" id="stars"></div>
 
-<header>
-  <div class="ornament">✦ The Ancient Art of Names ✦</div>
-  <h1>Nam<span>astra</span></h1>
-  <div class="tagline">Discover the soul woven into every name</div>
+<!-- NAVBAR -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand">Nam<span>astra</span></a>
+  <div class="nav-links">
+    <a href="index.html"   class="nav-link">Home</a>
+    <a href="search.html"  class="nav-link">Search</a>
+    <a href="blog.html"    class="nav-link">Blog</a>
+    <a href="about.html"   class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="search.html"  class="nav-link nav-cta">Find a Name</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html"   class="nav-link">Home</a>
+  <a href="search.html"  class="nav-link">Search</a>
+  <a href="blog.html"    class="nav-link">Blog</a>
+  <a href="about.html"   class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<header class="page-hero">
+  <div class="page-eyebrow">✦ The Ancient Art of Names ✦</div>
+  <h1 class="page-title">Nam<span>astra</span></h1>
+  <p class="page-subtitle">Every name carries a universe of meaning — discover yours</p>
   <div class="divider"></div>
 </header>
 
-<div class="search-section">
-  <div class="input-wrap">
-    <input class="name-input" type="text" id="nameInput" placeholder="Enter a name..." autocomplete="off" />
-    <button class="search-btn" id="searchBtn" onclick="searchName()">✦ REVEAL THE MEANING ✦</button>
+<!-- QUICK SEARCH -->
+<section class="container-sm" aria-label="Name search" style="padding-bottom:60px">
+  <div class="search-box">
+    <input class="name-input" type="text" id="nameInput" placeholder="Enter any name…" autocomplete="off" aria-label="Enter a name to search"/>
+    <button class="btn-primary" id="searchBtn" onclick="goSearch()">✦ REVEAL THE MEANING ✦</button>
   </div>
-  <div class="error-box" id="errorBox"></div>
-</div>
-
-<div class="loading" id="loading">
-  <div class="loader-ring"></div>
-  <p>Unraveling the ancient scrolls…</p>
-</div>
-
-<div class="result-section" id="resultSection">
-  <div class="result-card">
-    <div class="card-header">
-      <div class="name-display" id="resName"></div>
-      <div class="name-pronunciation" id="resPronunciation"></div>
-    </div>
-    <div class="card-body">
-      <div class="info-block">
-        <div class="info-label">Core Meaning</div>
-        <div class="info-text" id="resMeaning"></div>
-      </div>
-      <div class="info-block">
-        <div class="info-label">Origin & Heritage</div>
-        <div class="info-text" id="resOrigin"></div>
-      </div>
-      <div class="info-block">
-        <div class="info-label">Tags</div>
-        <div class="tags-row" id="resTags"></div>
-      </div>
-      <div class="info-block">
-        <div class="info-label">Religious Significance</div>
-        <div class="info-text" id="resReligion"></div>
-      </div>
-      <div class="info-block">
-        <div class="info-label">Cultural Symbolism</div>
-        <div class="info-text" id="resCulture"></div>
-      </div>
-      <div class="info-block">
-        <div class="info-label">Name Numerology</div>
-        <div class="numerology-block">
-          <div class="numerology-num" id="resNumerologyNum">—</div>
-          <div class="numerology-text" id="resNumerologyText"></div>
-        </div>
-      </div>
-      <div class="info-block" id="famousBlock">
-        <div class="info-label">Notable Bearers</div>
-        <div class="famous-grid" id="resFamous"></div>
-      </div>
-      <div class="info-block">
-        <div class="info-label">Variations & Similar Names</div>
-        <div class="tags-row" id="resVariations"></div>
-      </div>
-    </div>
+  <div style="text-align:center;margin-top:20px">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:0.9rem;letter-spacing:0.06em">Try: Mohammed · Arjun · Sofia · Leila · Noah · Priya</p>
   </div>
-</div>
+</section>
 
-<div class="popular-section">
-  <div class="section-title">✦ Explore Popular Names ✦</div>
+<!-- FEATURES -->
+<section class="container" style="padding-bottom:80px" aria-labelledby="features-heading">
+  <h2 id="features-heading" class="section-title">✦ What Namastra Reveals ✦</h2>
+  <div class="cards-grid">
+    <article class="card">
+      <div class="card-icon">📜</div>
+      <h3 class="card-title">Deep Etymology</h3>
+      <p class="card-text">Trace the linguistic roots of any name — from ancient Sanskrit and Arabic to Latin, Hebrew, and beyond.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">🕌</div>
+      <h3 class="card-title">Religious Significance</h3>
+      <p class="card-text">Discover how a name is revered across Hindu, Muslim, Christian, Jewish, Buddhist, and dozens of other traditions.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">🌍</div>
+      <h3 class="card-title">Cultural Heritage</h3>
+      <p class="card-text">Explore how names travel across 195+ countries — their symbolism, history, and the traits they're believed to bestow.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">🔢</div>
+      <h3 class="card-title">Numerology</h3>
+      <p class="card-text">Every name carries a vibrational number. Uncover what your name's numerology says about personality and destiny.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">⭐</div>
+      <h3 class="card-title">Famous Bearers</h3>
+      <p class="card-text">From ancient kings to modern icons — see who in history has carried your name and left their mark on the world.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">✨</div>
+      <h3 class="card-title">Variations & Variants</h3>
+      <p class="card-text">Find beautiful variations of any name across cultures and languages, with clickable lookup for each variant.</p>
+    </article>
+  </div>
+</section>
+
+<!-- POPULAR NAMES -->
+<section class="container" style="padding-bottom:80px" aria-labelledby="popular-heading">
+  <h2 id="popular-heading" class="section-title">✦ Popular Name Searches ✦</h2>
   <div class="popular-grid" id="popularGrid"></div>
-</div>
+</section>
 
-<script>
-  // Stars
-  const starsEl = document.getElementById('stars');
-  for (let i = 0; i < 90; i++) {
-    const s = document.createElement('div');
-    s.className = 'star';
-    s.style.cssText = `
-      left:${Math.random()*100}%;
-      top:${Math.random()*100}%;
-      --d:${2+Math.random()*4}s;
-      --delay:${Math.random()*5}s;
-      --bright:${0.3+Math.random()*0.7};
-      width:${1+Math.random()*2}px;
-      height:${1+Math.random()*2}px;
-    `;
-    starsEl.appendChild(s);
-  }
+<!-- CTA BANNER -->
+<section style="position:relative;z-index:10;padding:60px 24px;text-align:center;background:linear-gradient(135deg,rgba(200,151,58,0.08),rgba(200,151,58,0.02));border-top:1px solid rgba(200,151,58,0.12);border-bottom:1px solid rgba(200,151,58,0.12)">
+  <p class="page-eyebrow" style="margin-bottom:8px">✦ Ready to explore? ✦</p>
+  <h2 style="font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.5rem);color:var(--parchment);margin-bottom:16px">What does your name mean?</h2>
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);margin-bottom:28px;font-size:1.1rem">Search over 100,000 names across every culture, religion, and language on Earth.</p>
+  <a href="search.html" class="btn-outline">Begin the Search →</a>
+</section>
 
-  // Popular names
-  const popularNames = ['Aanya','Mohammed','Sofia','Liam','Priya','Yusuf','Elena','Arjun','Amara','Noah','Fatima','Lucas','Zara','Kai','Leila','Ethan','Nadia','Ibrahim','Clara','Ryo'];
-  const grid = document.getElementById('popularGrid');
-  popularNames.forEach(n => {
-    const chip = document.createElement('div');
-    chip.className = 'popular-chip';
-    chip.textContent = n;
-    chip.onclick = () => {
-      document.getElementById('nameInput').value = n;
-      searchName();
-    };
-    grid.appendChild(chip);
-  });
-
-  // Enter key
-  document.getElementById('nameInput').addEventListener('keydown', e => {
-    if (e.key === 'Enter') searchName();
-  });
-
-  function numerologyValue(name) {
-    const map = {a:1,b:2,c:3,d:4,e:5,f:6,g:7,h:8,i:9,j:1,k:2,l:3,m:4,n:5,o:6,p:7,q:8,r:9,s:1,t:2,u:3,v:4,w:5,x:6,y:7,z:8};
-    let sum = name.toLowerCase().replace(/[^a-z]/g,'').split('').reduce((a,c)=>a+(map[c]||0),0);
-    while (sum > 9 && sum !== 11 && sum !== 22 && sum !== 33) {
-      sum = String(sum).split('').reduce((a,c)=>a+Number(c),0);
-    }
-    return sum;
-  }
-
-  async function searchName() {
-    const name = document.getElementById('nameInput').value.trim();
-    if (!name) return;
-
-
-    const btn = document.getElementById('searchBtn');
-    const loading = document.getElementById('loading');
-    const resultSection = document.getElementById('resultSection');
-    const errorBox = document.getElementById('errorBox');
-
-    btn.disabled = true;
-    resultSection.classList.remove('show');
-    errorBox.classList.remove('show');
-    loading.classList.add('show');
-
-    const numVal = numerologyValue(name);
-    const numDesc = {
-      1:'Leadership and independence — a pioneer who forges their own path.',
-      2:'Harmony and diplomacy — a natural mediator and loving soul.',
-      3:'Creativity and expression — joy and artistic gifts flow naturally.',
-      4:'Stability and diligence — a builder of lasting foundations.',
-      5:'Freedom and adventure — restless, curious, and magnetic.',
-      6:'Nurturing and responsibility — a healer at heart.',
-      7:'Wisdom and introspection — a seeker of deeper truths.',
-      8:'Power and ambition — material success and strong will.',
-      9:'Compassion and idealism — a humanitarian spirit.',
-      11:'Master Intuition — heightened sensitivity and spiritual insight.',
-      22:'Master Builder — transforming vision into reality at scale.',
-      33:'Master Teacher — devoted to uplifting all of humanity.'
-    }[numVal] || 'A unique vibrational energy all their own.';
-
-
-    const prompt = `You are an expert in name etymology, world religions, and cultural history.
-The user wants to know everything about the name "${name}".
-
-Respond ONLY with a valid JSON object (no markdown, no backticks, no extra text) with these exact keys:
-{
-  "pronunciation": "phonetic guide e.g. ah-REE-yah",
-  "meaning": "2-3 sentence rich description of what this name means",
-  "origin": "2-3 sentence description of the linguistic and geographic origin",
-  "religions": ["list", "of", "religions", "this name is associated with"],
-  "countries": ["list", "of", "countries", "or regions"],
-  "gender": "Male / Female / Unisex",
-  "language_root": "e.g. Sanskrit, Arabic, Hebrew, Latin, Greek",
-  "religious_significance": "2-3 sentences about significance in religion or mythology",
-  "cultural_symbolism": "2-3 sentences about cultural meaning, traits, or symbolism",
-  "famous_people": [
-    {"name": "Full Name", "description": "Who they are, short"},
-    {"name": "Full Name", "description": "Who they are, short"}
-  ],
-  "variations": ["Aria", "Arya", "similar or variant names — at least 5"]
-}`;
-
-    const GROQ_API_KEY = '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'; 
-
-    try {
-      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${GROQ_API_KEY}`
-        },
-        body: JSON.stringify({
-          model: 'llama-3.3-70b-versatile',
-          max_tokens: 1200,
-          messages: [
-            { role: 'system', content: 'You are an expert in name etymology, world religions, and cultural history. Always respond with valid JSON only, no markdown, no backticks.' },
-            { role: 'user', content: prompt }
-          ]
-        })
-      });
-
-      const data = await response.json();
-      if (data.error) throw new Error(data.error.message);
-
-      const text = data.choices?.[0]?.message?.content || '';
-      const clean = text.replace(/```json|```/g, '').trim();
-      const info = JSON.parse(clean);
-
-      // Populate
-      document.getElementById('resName').textContent = name;
-      document.getElementById('resPronunciation').textContent = info.pronunciation ? `/ ${info.pronunciation} /` : '';
-      document.getElementById('resMeaning').textContent = info.meaning || '';
-      document.getElementById('resOrigin').textContent = info.origin || '';
-      document.getElementById('resReligion').textContent = info.religious_significance || '';
-      document.getElementById('resCulture').textContent = info.cultural_symbolism || '';
-      document.getElementById('resNumerologyNum').textContent = numVal;
-      document.getElementById('resNumerologyText').innerHTML = `<strong style="color:var(--parchment)">Number ${numVal}</strong> — ${numDesc}`;
-
-      // Tags
-      const tagsEl = document.getElementById('resTags');
-      tagsEl.innerHTML = '';
-      (info.religions || []).forEach(r => tagsEl.insertAdjacentHTML('beforeend',`<span class="tag tag-religion">${r}</span>`));
-      (info.countries || []).forEach(c => tagsEl.insertAdjacentHTML('beforeend',`<span class="tag tag-country">${c}</span>`));
-      if (info.gender) tagsEl.insertAdjacentHTML('beforeend',`<span class="tag tag-gender">${info.gender}</span>`);
-      if (info.language_root) tagsEl.insertAdjacentHTML('beforeend',`<span class="tag tag-origin">${info.language_root}</span>`);
-
-      // Famous
-      const famousEl = document.getElementById('resFamous');
-      famousEl.innerHTML = '';
-      (info.famous_people || []).slice(0,6).forEach(p => {
-        famousEl.insertAdjacentHTML('beforeend',`
-          <div class="famous-person">
-            <div class="famous-name">${p.name}</div>
-            <div class="famous-desc">${p.description}</div>
-          </div>`);
-      });
-      document.getElementById('famousBlock').style.display = (info.famous_people && info.famous_people.length) ? '' : 'none';
-
-      // Variations
-      const varEl = document.getElementById('resVariations');
-      varEl.innerHTML = '';
-      (info.variations || []).forEach(v => varEl.insertAdjacentHTML('beforeend',`<span class="tag tag-origin" style="cursor:pointer" onclick="document.getElementById('nameInput').value='${v}';searchName()">${v}</span>`));
-
-      loading.classList.remove('show');
-      resultSection.classList.add('show');
-      resultSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-
-    } catch (err) {
-      loading.classList.remove('show');
-      errorBox.textContent = 'The ancient scrolls are silent for now. Please try again.';
-      errorBox.classList.add('show');
-      console.error(err);
-    }
-
-    btn.disabled = false;
-  }
-</script>
-
-<footer style="position:relative;z-index:10;text-align:center;padding:30px 20px 50px;">
-  <div style="display:inline-flex;align-items:center;gap:10px;padding:10px 28px;border:1px solid rgba(200,151,58,0.25);border-radius:2px;background:rgba(245,237,224,0.03);">
-    <span style="color:rgba(200,151,58,0.4);font-size:0.7rem;">✦</span>
-    <span style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:0.95rem;letter-spacing:0.12em;">Crafted with soul by <strong style="color:var(--gold);font-style:normal;font-family:'Cinzel',serif;letter-spacing:0.15em;">Tushal Kumar</strong></span>
-    <span style="color:rgba(200,151,58,0.4);font-size:0.7rem;">✦</span>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Nam<span>astra</span></div>
+      <p class="footer-desc">Uncovering the soul woven into every name — through etymology, religion, culture, and numerology.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search Names</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Popular</div>
+      <ul class="footer-links">
+        <li><a href="search.html?q=Mohammed">Mohammed</a></li>
+        <li><a href="search.html?q=Sofia">Sofia</a></li>
+        <li><a href="search.html?q=Arjun">Arjun</a></li>
+        <li><a href="search.html?q=Fatima">Fatima</a></li>
+        <li><a href="search.html?q=Noah">Noah</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Namastra. All rights reserved.</div>
+    <div class="footer-made">Crafted with soul by <strong>Tushal Kumar</strong></div>
   </div>
 </footer>
+
+<script src="shared.js"></script>
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function goSearch() {
+    const q = document.getElementById('nameInput').value.trim();
+    if (q) location.href = 'search.html?q=' + encodeURIComponent(q);
+  }
+  document.getElementById('nameInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') goSearch();
+  });
+
+  const popular = ['Aanya','Mohammed','Sofia','Liam','Priya','Yusuf','Elena','Arjun','Amara','Noah','Fatima','Lucas','Zara','Kai','Leila','Ethan','Nadia','Ibrahim','Clara','Ryo','Aisha','Rohan','Isabella','Omar','Ananya','David','Layla','James','Meera','Tariq'];
+  popular.forEach(n => {
+    const c = document.createElement('div');
+    c.className = 'popular-chip';
+    c.textContent = n;
+    c.onclick = () => location.href = 'search.html?q=' + encodeURIComponent(n);
+    document.getElementById('popularGrid').appendChild(c);
+  });
+</script>
 </body>
 </html>
