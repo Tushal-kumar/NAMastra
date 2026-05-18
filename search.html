@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Search Name Meanings — Namastra</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Search the meaning of any name instantly. Get etymology, religious significance, cultural symbolism, numerology, and famous bearers — powered by AI."/>
+  <meta name="keywords" content="search name meaning, name origin lookup, baby name search, name meaning by religion, name etymology search, what does name mean"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://namastra.netlify.app/search.html"/>
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta property="og:title" content="Search Name Meanings — Namastra"/>
+  <meta property="og:description" content="Type any name and get a rich breakdown of its meaning, origin, religion, numerology and famous bearers."/>
+  <meta property="og:type" content="website"/>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Search Name Meanings",
+    "description": "AI-powered name meaning search engine covering etymology, religion, culture and numerology",
+    "url": "https://namastra.netlify.app/search.html"
+  }
+  </script>
+
+  <link rel="stylesheet" href="shared.css"/>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand">Nam<span>astra</span></a>
+  <div class="nav-links">
+    <a href="index.html"   class="nav-link">Home</a>
+    <a href="search.html"  class="nav-link">Search</a>
+    <a href="blog.html"    class="nav-link">Blog</a>
+    <a href="about.html"   class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="search.html"  class="nav-link nav-cta">Find a Name</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html"   class="nav-link">Home</a>
+  <a href="search.html"  class="nav-link">Search</a>
+  <a href="blog.html"    class="nav-link">Blog</a>
+  <a href="about.html"   class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+</div>
+
+<header class="page-hero">
+  <div class="page-eyebrow">✦ Name Explorer ✦</div>
+  <h1 class="page-title">Search <span>Any Name</span></h1>
+  <p class="page-subtitle">Type any name from any culture, religion, or language</p>
+  <div class="divider"></div>
+</header>
+
+<section class="container-sm" style="padding-bottom:40px" aria-label="Name search">
+  <div class="search-box">
+    <input class="name-input" type="text" id="nameInput" placeholder="Enter a name…" autocomplete="off" aria-label="Name to look up"/>
+    <button class="btn-primary" id="searchBtn" onclick="searchName()">✦ REVEAL THE MEANING ✦</button>
+  </div>
+  <div class="error-box" id="errorBox"></div>
+</section>
+
+<div class="loading" id="loading" role="status" aria-live="polite">
+  <div class="loader-ring"></div>
+  <p>Unraveling the ancient scrolls…</p>
+</div>
+
+<!-- RESULT -->
+<div class="result-section" id="resultSection" aria-live="polite">
+  <div class="result-card">
+    <div class="card-header">
+      <h2 class="name-display" id="resName"></h2>
+      <div class="name-pronunciation" id="resPronunciation"></div>
+    </div>
+    <div class="card-body">
+      <div class="info-block">
+        <div class="info-label">Core Meaning</div>
+        <p class="info-text" id="resMeaning"></p>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Origin & Heritage</div>
+        <p class="info-text" id="resOrigin"></p>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Tags</div>
+        <div class="tags-row" id="resTags"></div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Religious Significance</div>
+        <p class="info-text" id="resReligion"></p>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Cultural Symbolism</div>
+        <p class="info-text" id="resCulture"></p>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Name Numerology</div>
+        <div class="numerology-block">
+          <div class="numerology-num" id="resNumerologyNum">—</div>
+          <div class="numerology-text" id="resNumerologyText"></div>
+        </div>
+      </div>
+      <div class="info-block" id="famousBlock">
+        <div class="info-label">Notable Bearers</div>
+        <div class="famous-grid" id="resFamous"></div>
+      </div>
+      <div class="info-block">
+        <div class="info-label">Variations & Similar Names</div>
+        <div class="tags-row" id="resVariations"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POPULAR -->
+<section class="container" style="padding:40px 24px 80px" aria-labelledby="popular-heading">
+  <h2 id="popular-heading" class="section-title">✦ Popular Searches ✦</h2>
+  <div class="popular-grid" id="popularGrid"></div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Nam<span>astra</span></div>
+      <p class="footer-desc">Uncovering the soul woven into every name through etymology, religion, culture, and numerology.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search Names</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Popular</div>
+      <ul class="footer-links">
+        <li><a href="search.html?q=Muhammad">Muhammad</a></li>
+        <li><a href="search.html?q=Sofia">Sofia</a></li>
+        <li><a href="search.html?q=Arjun">Arjun</a></li>
+        <li><a href="search.html?q=Fatima">Fatima</a></li>
+        <li><a href="search.html?q=Noah">Noah</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Namastra. All rights reserved.</div>
+    <div class="footer-made">Crafted with soul by <strong>Tushal Kumar</strong></div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+
+  document.getElementById('nameInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') searchName();
+  });
+
+  // Pre-fill from URL param
+  window.addEventListener('DOMContentLoaded', () => {
+    const q = new URLSearchParams(location.search).get('q');
+    if (q) { document.getElementById('nameInput').value = q; searchName(); }
+  });
+
+  const popular = ['Aanya','Muhammad','Sofia','Liam','Priya','Yusuf','Elena','Arjun','Amara','Noah','Fatima','Lucas','Zara','Kai','Leila','Ethan','Nadia','Ibrahim','Clara','Ryo','Aisha','Rohan','Isabella','Omar'];
+  popular.forEach(n => {
+    const c = document.createElement('div');
+    c.className = 'popular-chip';
+    c.textContent = n;
+    c.onclick = () => { document.getElementById('nameInput').value = n; searchName(); };
+    document.getElementById('popularGrid').appendChild(c);
+  });
+
+  async function searchName() {
+    const name = document.getElementById('nameInput').value.trim();
+    if (!name) return;
+
+    const btn = document.getElementById('searchBtn');
+    const loading = document.getElementById('loading');
+    const resultSection = document.getElementById('resultSection');
+    const errorBox = document.getElementById('errorBox');
+
+    btn.disabled = true;
+    resultSection.classList.remove('show');
+    errorBox.classList.remove('show');
+    loading.classList.add('show');
+
+    // Update URL without reload
+    history.replaceState(null, '', `search.html?q=${encodeURIComponent(name)}`);
+    document.title = `${name} Name Meaning — Namastra`;
+
+    const numVal = numerologyValue(name);
+    const numDesc = numDescriptions[numVal] || 'A unique vibrational energy all their own.';
+
+    try {
+      const info = await lookupName(name);
+
+      document.getElementById('resName').textContent          = name;
+      document.getElementById('resPronunciation').textContent = info.pronunciation ? `/ ${info.pronunciation} /` : '';
+      document.getElementById('resMeaning').textContent       = info.meaning || '';
+      document.getElementById('resOrigin').textContent        = info.origin || '';
+      document.getElementById('resReligion').textContent      = info.religious_significance || '';
+      document.getElementById('resCulture').textContent       = info.cultural_symbolism || '';
+      document.getElementById('resNumerologyNum').textContent = numVal;
+      document.getElementById('resNumerologyText').innerHTML  = `<strong style="color:var(--parchment)">Number ${numVal}</strong> — ${numDesc}`;
+
+      const tagsEl = document.getElementById('resTags');
+      tagsEl.innerHTML = '';
+      (info.religions || []).forEach(r => tagsEl.insertAdjacentHTML('beforeend', `<span class="tag tag-religion">${r}</span>`));
+      (info.countries || []).forEach(c => tagsEl.insertAdjacentHTML('beforeend', `<span class="tag tag-country">${c}</span>`));
+      if (info.gender)        tagsEl.insertAdjacentHTML('beforeend', `<span class="tag tag-gender">${info.gender}</span>`);
+      if (info.language_root) tagsEl.insertAdjacentHTML('beforeend', `<span class="tag tag-origin">${info.language_root}</span>`);
+
+      const famousEl = document.getElementById('resFamous');
+      famousEl.innerHTML = '';
+      (info.famous_people || []).slice(0, 6).forEach(p => {
+        famousEl.insertAdjacentHTML('beforeend', `
+          <div class="famous-person">
+            <div class="famous-name">${p.name}</div>
+            <div class="famous-desc">${p.description}</div>
+          </div>`);
+      });
+      document.getElementById('famousBlock').style.display = info.famous_people?.length ? '' : 'none';
+
+      const varEl = document.getElementById('resVariations');
+      varEl.innerHTML = '';
+      (info.variations || []).forEach(v => {
+        varEl.insertAdjacentHTML('beforeend',
+          `<span class="tag tag-origin" style="cursor:pointer" onclick="document.getElementById('nameInput').value='${v}';searchName()">${v}</span>`);
+      });
+
+      loading.classList.remove('show');
+      resultSection.classList.add('show');
+      resultSection.scrollIntoView({ behavior:'smooth', block:'start' });
+
+    } catch (err) {
+      loading.classList.remove('show');
+      errorBox.textContent = '✦ ' + (err.message || 'The ancient scrolls are silent. Please try again.');
+      errorBox.classList.add('show');
+      console.error(err);
+    }
+    btn.disabled = false;
+  }
+</script>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Namastra — Discover the Meaning Behind Every Name</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Namastra reveals the deep meaning, origin, religion, and cultural significance of any name. Search baby names, learn etymology, numerology, and history — for free."/>
+  <meta name="keywords" content="name meaning, baby name meaning, name origin, name by religion, Hindu names, Muslim names, Christian names, name numerology, name etymology, what does my name mean"/>
+  <meta name="author" content="Tushal kumar"/>
+  <meta name="robots" content="index, follow"/>
+  <link rel="canonical" href="https://namastra.netlify.app/index.html"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Namastra — Discover the Meaning Behind Every Name"/>
+  <meta property="og:description" content="Search any name and instantly discover its meaning, cultural origin, religious significance, numerology, and famous bearers."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://namastra.netlify.app"/>
+  <meta property="og:image" content="https://namastra.netlify.app/og-image.jpg"/>
+  
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="Namastra — Soul of Every Name"/>
+  <meta name="twitter:description" content="Search any name and discover its deep meaning, origin, religion, numerology and more."/>
+
+  <!-- Schema.org Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Namastra",
+    "url": "https://namastra.netlify.app",
+    "description": "Discover the meaning, origin, and cultural significance of any name",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://namastra.netlify.app/search.html?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+
+  <link rel="stylesheet" href="shared.css"/>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand">Nam<span>astra</span></a>
+  <div class="nav-links">
+    <a href="index.html"   class="nav-link">Home</a>
+    <a href="search.html"  class="nav-link">Search</a>
+    <a href="blog.html"    class="nav-link">Blog</a>
+    <a href="about.html"   class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="search.html"  class="nav-link nav-cta">Find a Name</a>
+  </div>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html"   class="nav-link">Home</a>
+  <a href="search.html"  class="nav-link">Search</a>
+  <a href="blog.html"    class="nav-link">Blog</a>
+  <a href="about.html"   class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+</div>
+
+<!-- HERO -->
+<header class="page-hero">
+  <div class="page-eyebrow">✦ The Ancient Art of Names ✦</div>
+  <h1 class="page-title">Nam<span>astra</span></h1>
+  <p class="page-subtitle">Every name carries a universe of meaning — discover yours</p>
+  <div class="divider"></div>
+</header>
+
+<!-- QUICK SEARCH -->
+<section class="container-sm" aria-label="Name search" style="padding-bottom:60px">
+  <div class="search-box">
+    <input class="name-input" type="text" id="nameInput" placeholder="Enter any name…" autocomplete="off" aria-label="Enter a name to search"/>
+    <button class="btn-primary" id="searchBtn" onclick="goSearch()">✦ REVEAL THE MEANING ✦</button>
+  </div>
+  <div style="text-align:center;margin-top:20px">
+    <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);font-size:0.9rem;letter-spacing:0.06em">Try: Muhammad · Arjun · Sofia · Leila · Noah · Priya</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="container" style="padding-bottom:80px" aria-labelledby="features-heading">
+  <h2 id="features-heading" class="section-title">✦ What Namastra Reveals ✦</h2>
+  <div class="cards-grid">
+    <article class="card">
+      <div class="card-icon">📜</div>
+      <h3 class="card-title">Deep Etymology</h3>
+      <p class="card-text">Trace the linguistic roots of any name — from ancient Sanskrit and Arabic to Latin, Hebrew, and beyond.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">🕌</div>
+      <h3 class="card-title">Religious Significance</h3>
+      <p class="card-text">Discover how a name is revered across Hindu, Muslim, Christian, Jewish, Buddhist, and dozens of other traditions.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">🌍</div>
+      <h3 class="card-title">Cultural Heritage</h3>
+      <p class="card-text">Explore how names travel across 195+ countries — their symbolism, history, and the traits they're believed to bestow.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">🔢</div>
+      <h3 class="card-title">Numerology</h3>
+      <p class="card-text">Every name carries a vibrational number. Uncover what your name's numerology says about personality and destiny.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">⭐</div>
+      <h3 class="card-title">Famous Bearers</h3>
+      <p class="card-text">From ancient kings to modern icons — see who in history has carried your name and left their mark on the world.</p>
+    </article>
+    <article class="card">
+      <div class="card-icon">✨</div>
+      <h3 class="card-title">Variations & Variants</h3>
+      <p class="card-text">Find beautiful variations of any name across cultures and languages, with clickable lookup for each variant.</p>
+    </article>
+  </div>
+</section>
+
+<!-- POPULAR NAMES -->
+<section class="container" style="padding-bottom:80px" aria-labelledby="popular-heading">
+  <h2 id="popular-heading" class="section-title">✦ Popular Name Searches ✦</h2>
+  <div class="popular-grid" id="popularGrid"></div>
+</section>
+
+<!-- CTA BANNER -->
+<section style="position:relative;z-index:10;padding:60px 24px;text-align:center;background:linear-gradient(135deg,rgba(200,151,58,0.08),rgba(200,151,58,0.02));border-top:1px solid rgba(200,151,58,0.12);border-bottom:1px solid rgba(200,151,58,0.12)">
+  <p class="page-eyebrow" style="margin-bottom:8px">✦ Ready to explore? ✦</p>
+  <h2 style="font-family:'Cinzel',serif;font-size:clamp(1.5rem,4vw,2.5rem);color:var(--parchment);margin-bottom:16px">What does your name mean?</h2>
+  <p style="font-family:'Cormorant Garamond',serif;font-style:italic;color:var(--muted);margin-bottom:28px;font-size:1.1rem">Search over 100,000 names across every culture, religion, and language on Earth.</p>
+  <a href="search.html" class="btn-outline">Begin the Search →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Nam<span>astra</span></div>
+      <p class="footer-desc">Uncovering the soul woven into every name — through etymology, religion, culture, and numerology.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search Names</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Popular</div>
+      <ul class="footer-links">
+        <li><a href="search.html?q=Muhammad">Muhammad</a></li>
+        <li><a href="search.html?q=Sofia">Sofia</a></li>
+        <li><a href="search.html?q=Arjun">Arjun</a></li>
+        <li><a href="search.html?q=Fatima">Fatima</a></li>
+        <li><a href="search.html?q=Noah">Noah</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Namastra. All rights reserved.</div>
+    <div class="footer-made">Crafted with soul by <strong>Tushal Kumar</strong></div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+  function toggleMenu() {
+    document.getElementById('mobileMenu').classList.toggle('open');
+  }
+  function goSearch() {
+    const q = document.getElementById('nameInput').value.trim();
+    if (q) location.href = 'search.html?q=' + encodeURIComponent(q);
+  }
+  document.getElementById('nameInput').addEventListener('keydown', e => {
+    if (e.key === 'Enter') goSearch();
+  });
+
+  const popular = ['Aanya','Muhammad','Sofia','Liam','Priya','Yusuf','Elena','Arjun','Amara','Noah','Fatima','Lucas','Zara','Kai','Leila','Ethan','Nadia','Ibrahim','Clara','Ryo','Aisha','Rohan','Isabella','Omar','Ananya','David','Layla','James','Meera','Tariq'];
+  popular.forEach(n => {
+    const c = document.createElement('div');
+    c.className = 'popular-chip';
+    c.textContent = n;
+    c.onclick = () => location.href = 'search.html?q=' + encodeURIComponent(n);
+    document.getElementById('popularGrid').appendChild(c);
+  });
+</script>
+</body>
+</html>

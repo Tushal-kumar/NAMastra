@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+
+  <!-- ═══════ PRIMARY SEO ═══════ -->
+  <title>Contact Namastra — Questions, Feedback &amp; Name Suggestions</title>
+  <link rel="icon" type="image/png" href="logo.png">
+  <meta name="description"   content="Contact the Namastra team for questions about name meanings, feedback, partnership enquiries, or to suggest a name for our database. We respond within 48 hours."/>
+  <meta name="keywords"      content="contact namastra, name meaning feedback, name suggestion, namastra support, name meaning website contact, report name meaning error, suggest new name, namastra partnership, name data licensing"/>
+  <meta name="author"        content="Tushal Kumar — Namastra"/>
+  <meta name="robots"        content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+  <meta name="googlebot"     content="index, follow"/>
+  <meta name="language"      content="English"/>
+  <meta name="revisit-after" content="7 days"/>
+  <meta name="rating"        content="general"/>
+  <meta name="theme-color"   content="#1a0f0a"/>
+  <link rel="canonical"      href="https://namastra.netlify.app/contact.html"/>
+
+  <!-- ═══════ OPEN GRAPH ═══════ -->
+  <meta property="og:type"         content="website"/>
+  <meta property="og:site_name"    content="Namastra"/>
+  <meta property="og:title"        content="Contact Namastra"/>
+  <meta property="og:description"  content="Get in touch with the Namastra team — name suggestions, feedback, and partnerships welcome."/>
+  <meta property="og:url"          content="https://namastra.netlify.app/contact.html"/>
+  <meta property="og:image"        content="https://namastra.netlify.app/og-image.jpg"/>
+  <meta property="og:image:width"  content="1200"/>
+  <meta property="og:image:height" content="630"/>
+  <meta property="og:image:alt"    content="Namastra — Discover the meaning behind every name"/>
+  <meta property="og:locale"       content="en_US"/>
+
+  <!-- ═══════ TWITTER / X CARD ═══════ -->
+  <meta name="twitter:card"        content="summary_large_image"/>
+  <meta name="twitter:site"        content="@namastra"/>
+  <meta name="twitter:title"       content="Contact Namastra"/>
+  <meta name="twitter:description" content="Reach the Namastra team for questions, feedback, or name suggestions."/>
+  <meta name="twitter:image"       content="https://namastra.netlify.app/og-image.jpg"/>
+
+  <!-- ═══════ SCHEMA.ORG STRUCTURED DATA ═══════ -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"ContactPage","name":"Contact Namastra — Questions, Feedback &amp; Name Suggestions","description":"Contact the Namastra team for questions about name meanings, feedback, partnership enquiries, or to suggest a name for our database. We respond within 48 hours.","url":"https://namastra.netlify.app/contact.html","breadcrumb":{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://namastra.netlify.app/"},{"@type":"ListItem","position":2,"name":"Contact","item":"https://namastra.netlify.app/contact.html"}]}}
+  </script>
+
+  <link rel="stylesheet" href="shared.css"/>
+</head>
+<body>
+
+<div class="stars" id="stars"></div>
+
+<nav class="navbar" role="navigation" aria-label="Main navigation">
+  <a href="index.html" class="nav-brand">Nam<span>astra</span></a>
+  <div class="nav-links">
+    <a href="index.html"   class="nav-link">Home</a>
+    <a href="search.html"  class="nav-link">Search</a>
+    <a href="blog.html"    class="nav-link">Blog</a>
+    <a href="about.html"   class="nav-link">About</a>
+    <a href="contact.html" class="nav-link">Contact</a>
+    <a href="search.html"  class="nav-link nav-cta">Find a Name</a>
+  </div>
+  <button class="hamburger" onclick="document.getElementById('mobileMenu').classList.toggle('open')" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html"   class="nav-link">Home</a>
+  <a href="search.html"  class="nav-link">Search</a>
+  <a href="blog.html"    class="nav-link">Blog</a>
+  <a href="about.html"   class="nav-link">About</a>
+  <a href="contact.html" class="nav-link">Contact</a>
+</div>
+
+<header class="page-hero">
+  <div class="page-eyebrow">✦ Reach Out ✦</div>
+  <h1 class="page-title">Get in <span>Touch</span></h1>
+  <p class="page-subtitle">Questions, feedback, name suggestions, or partnership enquiries — we'd love to hear from you</p>
+  <div class="divider"></div>
+</header>
+
+<section class="container" style="padding-bottom:80px">
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start" id="contactGrid">
+
+    <!-- FORM — Netlify integrated -->
+    <div style="background:var(--card-bg);border:1px solid var(--card-border);border-radius:6px;padding:40px">
+      <div class="info-label" style="margin-bottom:24px">Send a Message</div>
+
+      <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="handleSubmit(event)">
+        <input type="hidden" name="form-name" value="contact"/>
+        <p style="display:none"><label>Don't fill this: <input name="bot-field"/></label></p>
+
+        <div class="form-group">
+          <label class="form-label" for="contactName">Your Name</label>
+          <input class="form-input" type="text" id="contactName" name="name" placeholder="e.g. xyz" autocomplete="name" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="contactEmail">Email Address</label>
+          <input class="form-input" type="email" id="contactEmail" name="email" placeholder="you@example.com" autocomplete="email" required/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="contactSubject">Subject</label>
+          <input class="form-input" type="text" id="contactSubject" name="subject" placeholder="What's this about?"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="contactMsg">Message</label>
+          <textarea class="form-textarea" id="contactMsg" name="message" placeholder="Tell us what's on your mind…" required></textarea>
+        </div>
+
+        <button class="btn-primary" type="submit" id="submitBtn">✦ SEND MESSAGE ✦</button>
+
+        <div id="formSuccess" style="display:none;margin-top:16px;background:rgba(90,122,92,0.2);border:1px solid rgba(90,122,92,0.4);border-radius:4px;padding:16px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#a8c8aa">
+          ✦ Message sent! We'll get back to you soon.
+        </div>
+        <div id="formError" style="display:none;margin-top:16px;background:rgba(139,58,42,0.15);border:1px solid rgba(139,58,42,0.4);border-radius:4px;padding:16px;text-align:center;font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:#e0a898">
+          ✦ Something went wrong. Please try again.
+        </div>
+      </form>
+    </div>
+
+    <!-- CONTACT INFO -->
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="card">
+        <div class="card-icon">💌</div>
+        <h3 class="card-title">General Enquiries</h3>
+        <p class="card-text">Questions about how Namastra works, feedback, or anything else — drop us a line and we'll respond within 48 hours.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📛</div>
+        <h3 class="card-title">Suggest a Name</h3>
+        <p class="card-text">Can't find a name? Have a rare or regional name you'd like to see covered? Tell us and we'll add it to our research queue.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <h3 class="card-title">Partnership & Press</h3>
+        <p class="card-text">Interested in collaborating, licensing our name data, or featuring Namastra in your publication? We'd love to connect.</p>
+      </div>
+      <div class="card" style="background:linear-gradient(135deg,rgba(200,151,58,0.1),rgba(200,151,58,0.03))">
+        <div class="card-icon">✦</div>
+        <h3 class="card-title">Quick Search Instead?</h3>
+        <p class="card-text" style="margin-bottom:16px">Most questions are answered instantly by searching any name.</p>
+        <a href="search.html" class="btn-outline" style="font-size:0.75rem">Search a Name →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">Nam<span>astra</span></div>
+      <p class="footer-desc">Uncovering the soul woven into every name through etymology, religion, culture, and numerology.</p>
+    </div>
+    <div>
+      <div class="footer-heading">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="search.html">Search Names</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-heading">Explore</div>
+      <ul class="footer-links">
+        <li><a href="search.html?q=Muhammad">Muhammad Meaning</a></li>
+        <li><a href="search.html?q=Sophia">Sophia Meaning</a></li>
+        <li><a href="search.html?q=Arjun">Arjun Meaning</a></li>
+        <li><a href="blog.html">Name Articles</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2026 Namastra. All rights reserved.</div>
+    <div class="footer-made">Crafted with soul by <strong>Tushal Kumar</strong></div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+  // Responsive contact grid
+  function fixGrid() {
+    const g = document.getElementById('contactGrid');
+    if (g) g.style.gridTemplateColumns = window.innerWidth < 768 ? '1fr' : '1fr 1fr';
+  }
+  fixGrid();
+  window.addEventListener('resize', fixGrid);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('submitBtn');
+    const success = document.getElementById('formSuccess');
+    const error = document.getElementById('formError');
+    btn.disabled = true;
+    btn.textContent = 'Sending…';
+
+    const formData = new FormData(e.target);
+
+    try {
+      const res = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+      });
+      if (res.ok) {
+        success.style.display = 'block';
+        error.style.display = 'none';
+        btn.style.display = 'none';
+        e.target.reset();
+      } else {
+        throw new Error('Server error');
+      }
+    } catch (err) {
+      error.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = '✦ SEND MESSAGE ✦';
+    }
+  }
+</script>
+</body>
+</html>
