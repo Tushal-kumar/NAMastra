@@ -196,12 +196,14 @@
 
     const formData = new FormData(e.target);
 
-    try {
-      const res = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
-      });
+ try {
+  const formData = new FormData(e.target);
+  formData.append('form-name', 'contact');
+  const res = await fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData).toString()
+  });
       if (res.ok) {
         success.style.display = 'block';
         error.style.display = 'none';
