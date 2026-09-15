@@ -62,7 +62,7 @@ Respond ONLY with a valid JSON object (no markdown, no backticks, no extra text)
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${GROQ_API_KEY}` },
     body: JSON.stringify({
-      model: 'llama-3.3-70b-versatile',
+      model: 'openai/gpt-oss-120b',
       max_tokens: 1200,
       messages: [
         { role: 'system', content: 'You are an expert in name etymology. Always respond with valid JSON only.' },
