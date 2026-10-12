@@ -1,4 +1,4 @@
-const GROQ_API_KEY = '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';
+const GROQ_API_KEY = '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';
 
 // Starfield
 function initStars(count = 90) {
